@@ -1,0 +1,27 @@
+$theme-color: red;
+$border-color: #ccc;
+$text-light-color: white;
+$text-light-gray-color: #aaa;
+$font-size: 0.24rem;
+$head-height: 7rem;
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+  box-shadow        : $value;
+}
+@mixin transition($value) {
+  -webkit-transition: $value;
+  transition        : $value;
+}
+@mixin placeholder-color($value) {
+  &::-webkit-input-placeholder {
+    color: $value;
+  }
+}
+@mixin page-width() {
+   @media screen and (max-width: 1280px){
+    width: 10rem;
+  }
+  @media screen and (max-width: 1920px) {
+    width: 18rem;
+  }
+}
