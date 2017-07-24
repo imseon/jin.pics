@@ -13,20 +13,39 @@
 
 <template>
 <div class="pic-list">
-  <PicListItem />
-  <PicListItem />
+  <PicListItem v-for="item of list" :post-id="item.objectId" :title="item.title" :key="item.objectId" :big-pic="item.bigPic" :small-pics="item.smallPics" :tags="item.tags" />
+  <pagination :page="page" :size="size" :total="total" @change="turn" />
 </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import PicListItem from './pic-list-item'
+import pagination from './pagination'
 
 export default {
   props: [],
+  computed: mapState({
+    list: state => state.posts.list,
+    page: state => state.posts.page,
+    size: state => state.posts.size,
+    total: state => state.posts.total
+  }),
   components: {
-    PicListItem
+    PicListItem,
+    pagination
   },
-  methods: {},
-  mounted () {}
+  methods: {
+    turn (page) {
+      this.$store.dispatch('posts/fetch', {
+        page
+      })
+    }
+  },
+  mounted () {
+    this.$store.dispatch('posts/fetch')
+  }
 }
 </script>

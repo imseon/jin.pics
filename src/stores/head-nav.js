@@ -3,7 +3,6 @@
  * namespaced为true，是为了避免store的module之间，getters、mutations、actions发生命名冲突
  */
 
-// whatwg-fetch仅能在浏览器环境使用。
 import Bem from 'bemcloud-storage'
 
 export default {

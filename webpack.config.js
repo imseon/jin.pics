@@ -4,7 +4,8 @@ var path = require('path'),
   BomPlugin = require('webpack-utf8-bom'),
   fs = require('fs'),
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  WebpackMd5Hash = require('webpack-md5-hash')
+  WebpackMd5Hash = require('webpack-md5-hash'),
+  SpritesmithPlugin = require('webpack-spritesmith');
 
 /*
  * 指定项目名
@@ -52,7 +53,7 @@ module.exports = {
     extensions: [
       '.vue', '.js'
     ],
-    modules: ["node_modules"],
+    modules: ["node_modules", "spritesmith-generated"],
     alias: {
       vue: 'vue/dist/vue.min.js',
       components: __dirname + '/src/components/',
@@ -135,7 +136,20 @@ module.exports.plugins = buildHTML().concat([
       }
     }
   }),
-  new webpack.HashedModuleIdsPlugin()
+  new webpack.HashedModuleIdsPlugin(),
+  new SpritesmithPlugin({
+    src: {
+      cwd: path.resolve(__dirname, 'src/assets/images'),
+      glob: '*.png'
+    },
+    target: {
+      image: path.resolve(__dirname, 'src/spritesmith-generated/sprite.png'),
+      css: path.resolve(__dirname, 'src/spritesmith-generated/sprite.scss')
+    },
+    apiOptions: {
+      cssImageRef: "~sprite.png"
+    }
+  })
 ]);
 
 if (process.env.NODE_ENV === 'production') {

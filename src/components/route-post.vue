@@ -3,22 +3,22 @@
 </style>
 
 <template>
-<div class="index">
+<div class="route-post">
   <head-panel />
-  <pic-list />
+  <post-content :post-id="this.$route.params.id" />
   <site-footer />
 </div>
 </template>
 
 <script>
 import HeadPanel from './head-panel'
-import PicList from './pic-list'
+import PostContent from './post-content'
 import SiteFooter from './site-footer'
 
 export default {
   components: {
     HeadPanel,
-    PicList,
+    PostContent,
     SiteFooter
   },
   methods: {},

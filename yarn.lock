@@ -2961,6 +2961,10 @@ ignore@^3.2.0:
   version "3.3.3"
   resolved "https://registry.npmjs.org/ignore/-/ignore-3.3.3.tgz#432352e57accd87ab3110e82d3fea0e47812156d"
 
+impress.js@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/impress.js/-/impress.js-0.6.0.tgz#5211da4976408bb5b844eefc2914d9d4fe927e91"
+
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -3290,7 +3294,7 @@ jpeg-js@^0.1.1:
   version "0.1.2"
   resolved "https://registry.npmjs.org/jpeg-js/-/jpeg-js-0.1.2.tgz#135b992c0575c985cfa0f494a3227ed238583ece"
 
-jquery@^3.2.1:
+jquery@>=1.7.0, jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
@@ -3507,6 +3511,28 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+lg-autoplay.js@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/lg-autoplay.js/-/lg-autoplay.js-1.0.0.tgz#08307dd4183ec3d3a23c345890a41a5c64fe3751"
+
+lg-thumbnail.js@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/lg-thumbnail.js/-/lg-thumbnail.js-1.0.0.tgz#da737abbeb987a1b9ca57d1024edd351002d297b"
+
+lg-thumbnail@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/lg-thumbnail/-/lg-thumbnail-1.0.3.tgz#ead123b8499d6c11ae9afeb5ccb4a4056ed64f5a"
+  dependencies:
+    jquery ">=1.7.0"
+
+lg-zoom.js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/lg-zoom.js/-/lg-zoom.js-1.0.1.tgz#5e1cdc57409f5e331b573d0fd93dc26479c80cde"
+
+lightgallery.js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/lightgallery.js/-/lightgallery.js-1.0.1.tgz#5107b45f8c6cee104adfe2a7db4a16ea3f4ce664"
 
 load-json-file@^1.0.0:
   version "1.1.0"

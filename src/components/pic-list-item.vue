@@ -1,12 +1,13 @@
 <style lang="scss" scoped>
 @import "../main/css/common.scss";
+@import "~sprite.scss";
 
 $img-size: 5rem;
 $padding: 0.3rem;
 
 .pic-list-item {
-    background: white;
-    border-radius: 0.1rem;
+    background: #fcfcfc;
+    border-radius: 0.06rem;
     padding: $padding;
     text-align: left;
     position: relative;
@@ -29,7 +30,7 @@ $padding: 0.3rem;
         li {
             padding: 0.07rem 0.14rem;
             font-size: 0.2rem;
-            background: #8abfec;
+            background: $theme-color-blue;
             display: inline-block;
             color: $text-light-color;
             margin-right: 0.07rem;
@@ -55,11 +56,12 @@ $padding: 0.3rem;
             top: 0;
             width: 1.8rem;
             height: 3rem;
-            background: #d2d2d2;
+            background: $theme-color-gray;
             line-height: 3.6rem;
             text-align: center;
             font-size: 0.2rem;
             color: white;
+            cursor: pointer;
             i {
                 background: url("../assets/images/right-arrow.svg") no-repeat;
                 width: 0.7rem;
@@ -71,6 +73,17 @@ $padding: 0.3rem;
                 left: 50%;
                 margin-top: -.6rem;
                 margin-left: -.35rem;
+            }
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                &:hover {
+                    color: white;
+                }
+            }
+            &:hover {
+                background: darken($theme-color-gray,10%);
             }
         }
     }
@@ -94,19 +107,16 @@ $padding: 0.3rem;
 
 <template>
 <div class="pic-list-item">
-  <img class="big" src="http://upyun.liondns.com/goods/1499765930209.jpg" />
-  <h2>在初夏，漫步在大连美丽的街道</h2>
+  <img class="big" :src="bigPic" />
+  <h2>{{title}}</h2>
   <ul class="tags">
-    <li>旅行</li>
-    <li>摄影</li>
+    <li v-for="tag of tags">{{tag.name}}</li>
   </ul>
   <ul class="thumbs">
-    <li><img class="small" src="http://upyun.liondns.com/goods/1499765930209.jpg" /></li>
-    <li><img class="small" src="http://upyun.liondns.com/goods/1499765930209.jpg" /></li>
-    <li><img class="small" src="http://upyun.liondns.com/goods/1499765930209.jpg" /></li>
-    <li><img class="small" src="http://upyun.liondns.com/goods/1499765930209.jpg" /></li>
+    <li v-for="pic of smallPics"><img class="small" :src="pic.img || pic" /></li>
+    <li><img class="small" :src="smallPics[0].img || smallPics[0]" /></li>
     <li class="btn-more">
-      <i></i> 查看更多
+      <router-link :to="{ name: 'post', params: {id:postId} }"><i></i> 查看更多</router-link>
     </li>
   </ul>
   <div class="bottom">
@@ -118,7 +128,7 @@ $padding: 0.3rem;
 
 <script>
 export default {
-  props: [],
+  props: ['title', 'bigPic', 'smallPics', 'tags', 'postId'],
   components: {},
   methods: {},
   mounted () {}

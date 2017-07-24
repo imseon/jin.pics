@@ -8,13 +8,23 @@ li {
     color: $text-light-color;
     display: inline-block;
     padding-right: 0.2rem;
+    a {
+        &:focus {
+            color: $text-light-color;
+            text-decoration: none;
+        }
+        &:hover {
+            color: darken($text-light-color,20%);
+            text-decoration: none;
+        }
+    }
 }
 </style>
 
 <template>
 <ul class="head-nav">
   <li v-for="link of links">
-    <a :href="link.url">{{ link.name }}</a>
+    <router-link :to="{ name: 'index' }">{{ link.name }}</router-link>
   </li>
 </ul>
 </template>
