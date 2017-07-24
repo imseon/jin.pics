@@ -37,7 +37,9 @@ h1 {
         color: #666;
     }
 }
-.gallery-item-desc {}
+.gallery-item-desc-hidden {
+    display: none;
+}
 </style>
 
 <template>
@@ -49,7 +51,7 @@ h1 {
       <li v-for="pic,i of post.pics" :data-sub-html="`.gallery-item-desc-hidden-${i}`" :data-src="pic.img" :data-thumbnail="pic.img + '!w300'">
         <img :src="pic.img" />
         <p v-if="pic.desc">{{pic.desc}}</p>
-        <div :class="`gallery-item-desc-hidden-${i}`">
+        <div :class="`gallery-item-desc-hidden gallery-item-desc-hidden-${i}`">
           <p class="gallery-item-desc">
             {{pic.desc}}
           </p>
@@ -81,21 +83,7 @@ export default {
   },
   methods: {
     changeMode (mode) {
-      if (mode === 'article') {
-        const lgElem = document.querySelector('.pics-list')
-        const lg = window.lgData[lgElem.getAttribute('lg-uid')]
-        if (lg) {
-          lg.destroy()
-        }
-      } else {
-        const lgElem = document.querySelector('.pics-list')
-        window.lightGallery(lgElem, {
-          selector: 'li',
-          mode: 'lg-zoom-in',
-          exThumbImage: 'data-thumbnail',
-          thumbnail: true,
-          showThumbByDefault: false
-        })
+      if (mode === 'gallery') {
         const ev = new Event('click')
         this.$el.querySelector('li').dispatchEvent(ev)
       }
@@ -114,6 +102,14 @@ export default {
     })
     this.$watch('post', (post) => {
       if (post) {
+        const lgElem = document.querySelector('.pics-list')
+        window.lightGallery(lgElem, {
+          selector: 'li',
+          mode: 'lg-zoom-in',
+          exThumbImage: 'data-thumbnail',
+          thumbnail: true,
+          showThumbByDefault: false
+        })
         this.changeMode(this.mode)
       }
     })
