@@ -46,9 +46,6 @@
 export default {
   props: ['page', 'size', 'total', 'align'],
   computed: {
-    page: function () {
-      return this.$props.page || 1
-    },
     totalPage: function () {
       return Math.ceil(this.total / this.size)
     }

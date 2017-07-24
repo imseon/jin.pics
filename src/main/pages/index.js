@@ -8,13 +8,6 @@ import initVue from 'utils/initVue'
 import Index from 'components/index'
 import Post from 'components/route-post'
 import 'bootstrap/dist/css/bootstrap.css'
-import Bem from 'bemcloud-storage'
-
-Bem._config.APIServerURL = 'http://wxapi.bemcloud.com'
-Bem.init({
-  appId: '2knu8AhtZ8LC8dcaXHBPky3sA7YbouYY',
-  javascriptKey: 'broUV99MXZmbsiouvrm76fd8vhjqbtoN'
-})
 
 /*
  * 引入vuex
@@ -32,13 +25,11 @@ const routes = [
 /*
  * 实例化store
  */
-import sync from 'stores/sync'
 import headNav from 'stores/head-nav'
 import headPics from 'stores/head-pics'
 import posts from 'stores/posts'
 const store = new Vuex.Store({
   modules: {
-    sync,
     headNav,
     headPics,
     posts

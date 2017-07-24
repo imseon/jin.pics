@@ -46,7 +46,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: process.env.NODE_ENV == 'production' ?
-      'http://localhost:8000/dist/' : '/dist/',
+      'http://upyun.henhuixuan.com/jin/' : '/dist/',
     filename: process.env.NODE_ENV == 'production' ? featureName + '/[name].[chunkhash:12].js' : featureName + '/[name].js'
   },
   resolve: {
@@ -103,7 +103,7 @@ module.exports = {
       loader: 'url-loader',
       query: {
         limit: 15000,
-        name: featureName + '/images/[name].[ext]'
+        name: featureName + '/[name].[ext]'
       }
     }]
   },
@@ -120,7 +120,10 @@ module.exports = {
 module.exports.plugins = buildHTML().concat([
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    filename: featureName + '/vendors.min.js',
+    filename: process.env.NODE_ENV === 'production' ? featureName + '/vendors.[chunkhash:12].js' : featureName + '/vendors.js',
+    minChunks: function(module, count) {
+      return false
+    },
     minify: {
       removeComments: true,
       collapseWhitespace: false
@@ -169,5 +172,5 @@ if (process.env.NODE_ENV === 'production') {
     new ExtractTextPlugin(featureName + "/[name].[chunkhash:12].css")
   ]);
 } else {
-  module.exports.devtool = 'eval-source-map'
+  module.exports.devtool = 'cheap-source-map'
 }

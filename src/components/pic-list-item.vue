@@ -1,6 +1,5 @@
 <style lang="scss" scoped>
 @import "../main/css/common.scss";
-@import "~sprite.scss";
 
 $img-size: 5rem;
 $padding: 0.3rem;

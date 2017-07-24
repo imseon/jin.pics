@@ -69,7 +69,7 @@ import {
 export default {
   data () {
     return {
-      mode: 'gallery'
+      mode: 'article'
     }
   },
   props: ['postId'],

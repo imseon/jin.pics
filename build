@@ -1,0 +1,77 @@
+#!/bin/bash
+
+export BUILD_ID=dontKillMePlease
+
+function p() {
+    echo -e "\033[32m$1\033[0m"
+}
+
+function perr() {
+    echo -e "\033[31m$1\033[0m"
+}
+
+function pwarn() {
+    echo -e "\033[33m$1\033[0m"
+}
+
+function pinfo() {
+    echo -e "\033[36m$1\033[0m"
+}
+
+errstr="__error__"
+
+filecontent=$(cat package.json)
+version=$(echo $filecontent | jq -r '.version')
+echo version=$(echo $version) > /tmp/$project.profile
+
+yarn install
+rm -rf dist/$project/*.*
+err=$(npm run build 1>/dev/null || echo $errstr)
+if [ "$err" = "__error__" ]; then
+  exit 1
+fi
+err=$(npm run buildserver 1>/dev/null || echo $errstr)
+if [ "$err" = "__error__" ]; then
+  exit 1
+fi
+newfiles=()
+for file in $(ls dist/$project/*)
+do
+  if [ -f $file ]; then
+    filename=${file##*/}
+
+    status=$(curl -I -w %{http_code} -o /dev/null -s "http://upyun.henhuixuan.com/jin/$project/$filename")
+    if [ $status = 404 ]; then
+      scp -r dist/$project/* root@192.168.7.3:/data/www/static/jin/$project/
+      pinfo "$filename transfered"
+      newfiles[${#newfiles[@]}]=$file
+    fi
+  fi
+done
+
+if [ ${#newfiles[@]} -gt 0 ]; then
+  for file in $newfiles
+  do
+    if [ -f $file ]; then
+      filename=${file##*/}
+      status="404"
+      pinfo "waiting for $filename"
+      while [ "$status" != "200" ]
+      do
+        status=$(curl -I -w %{http_code} -o /dev/null -s "http://upyun.henhuixuan.com/jin/$project/$filename")
+        wait
+        if [ "$status" != "200" ]; then
+          sleep 5s
+        fi
+      done
+    fi
+  done
+
+  err=$(pm2 reload $project 1>/dev/null 2>/dev/null || echo $errstr)
+  if [ "$err" = "__error__" ]; then
+    pm2 restart -n $project dist/$project/server/index.js
+  fi
+else
+  echo 'no files changed'
+  exit 1
+fi

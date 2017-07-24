@@ -3,7 +3,7 @@
  * namespaced为true，是为了避免store的module之间，getters、mutations、actions发生命名冲突
  */
 
-import Bem from 'bemcloud-storage'
+import initBem from 'utils/initBem'
 
 export default {
   namespaced: true,
@@ -33,6 +33,7 @@ export default {
   actions: {
     fetch ({ commit, state }, opts) {
       opts = opts || {}
+      const Bem = initBem()
       let query = new Bem.Query('Post')
       const page = opts.page || 1
       query.include('tags').limit(state.size).skip(state.size * (page - 1)).find().then((res) => {
@@ -48,6 +49,7 @@ export default {
       })
     },
     fetchPost ({ commit, state }, { id }) {
+      const Bem = initBem()
       const Post = Bem.Object.extend('Post')
       const post = new Post()
       post.id = id

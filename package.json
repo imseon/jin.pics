@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --inline --hot --host localhost --port=8010",
-    "server": "webpack-dev-server --config=webpack.server.config.js --inline --hot --host localhost",
+    "server": "webpack --config=webpack.server.config.js --watch",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "deploy": ""
+    "buildserver": "cross-env NODE_ENV=production webpack --config=webpack.server.config.js"
   },
   "author": "yang.li",
   "license": "MIT",
@@ -32,11 +32,9 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
-    "impress.js": "^0.6.0",
     "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
     "lg-autoplay.js": "^1.0.0",
-    "lg-thumbnail": "^1.0.3",
     "lg-thumbnail.js": "^1.0.0",
     "lg-zoom.js": "^1.0.1",
     "lightgallery.js": "^1.0.1",

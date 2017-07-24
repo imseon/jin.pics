@@ -7,6 +7,12 @@ import Router from 'koa-router'
 import fs from 'fs'
 import path from 'path'
 import getTemplatePath from 'utils/getTemplatePath'
+import Bem from 'bemcloud-storage'
+Bem._config.APIServerURL = 'http://wxapi.bemcloud.com'
+Bem.init({
+  appId: '2knu8AhtZ8LC8dcaXHBPky3sA7YbouYY',
+  javascriptKey: 'broUV99MXZmbsiouvrm76fd8vhjqbtoN'
+})
 
 const app = new Koa();
 
