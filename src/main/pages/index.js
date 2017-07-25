@@ -7,7 +7,6 @@ import Vuex from 'vuex'
 import initVue from 'utils/initVue'
 import Index from 'components/index'
 import Post from 'components/route-post'
-import 'bootstrap/dist/css/bootstrap.css'
 
 /*
  * 引入vuex

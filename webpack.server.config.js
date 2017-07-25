@@ -61,7 +61,7 @@ module.exports = merge({}, {
       test: /\.html$/,
       loader: 'vue-html-loader'
     }, {
-      test: /\.(png|jpg|gif|svg)$/,
+      test: /\.(gif|png|jpg|woff|woff2|svg|ttf|eot)$/,
       loader: 'url-loader',
       query: {
         limit: 15000,
