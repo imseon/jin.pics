@@ -8,6 +8,7 @@
 }
 .loading {
     position: absolute;
+    display: block;
     right: 0.2rem;
     bottom: 0.2rem;
     color: $text-light-color;
