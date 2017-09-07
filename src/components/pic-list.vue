@@ -26,7 +26,7 @@ import PicListItem from './pic-list-item'
 import pagination from './pagination'
 
 export default {
-  props: [],
+  props: ['tagId'],
   computed: mapState({
     list: state => state.posts.list,
     page: state => state.posts.page,
@@ -40,12 +40,15 @@ export default {
   methods: {
     turn (page) {
       this.$store.dispatch('posts/fetch', {
-        page
+        page,
+        tagId: this.tagId
       })
     }
   },
   mounted () {
-    this.$store.dispatch('posts/fetch')
+    this.$store.dispatch('posts/fetch', {
+      tagId: this.tagId
+    })
   }
 }
 </script>

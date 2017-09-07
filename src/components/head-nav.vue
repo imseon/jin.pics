@@ -24,7 +24,7 @@ li {
 <template>
 <ul class="head-nav">
   <li v-for="link of links">
-    <router-link :to="{ name: 'index' }">{{ link.name }}</router-link>
+    <router-link :to="link.url">{{ link.name }}</router-link>
   </li>
 </ul>
 </template>

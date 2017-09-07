@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 import initVue from 'utils/initVue'
 import Index from 'components/index'
 import Post from 'components/route-post'
+import Tag from 'components/route-tag'
 
 /*
  * 引入vuex
@@ -18,6 +19,7 @@ Vue.use(Vuex)
  */
 const routes = [
   { path: '/', name: 'index', component: Index },
+  { path: '/tags/:id', name: 'tag', component: Tag },
   { path: '/posts/:id', name: 'post', component: Post }
 ]
 

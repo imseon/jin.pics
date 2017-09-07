@@ -36,6 +36,13 @@ export default {
       const Bem = initBem()
       let query = new Bem.Query('Post')
       const page = opts.page || 1
+      const tagId = opts.tagId
+      if (tagId) {
+        const Tag = Bem.Object.extend('Tag')
+        const tag = new Tag()
+        tag.id = tagId
+        query.containedIn('tags', [tag])
+      }
       query.include('tags').limit(state.size).skip(state.size * (page - 1)).find().then((res) => {
         res.forEach(item => {
           item.set('tags', item.get('tags').map(tag => tag.toJSON()))
