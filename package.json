@@ -38,6 +38,7 @@
     "lg-thumbnail.js": "^1.0.0",
     "lg-zoom.js": "^1.0.1",
     "lightgallery.js": "^1.0.1",
+    "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "pug": "^2.0.0-rc.2",
     "sass-loader": "^6.0.6",

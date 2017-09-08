@@ -13,7 +13,7 @@
 
 <template>
 <div class="pic-list">
-  <PicListItem v-for="item of list" :post-id="item.objectId" :title="item.title" :key="item.objectId" :big-pic="item.bigPic" :small-pics="item.smallPics" :tags="item.tags" />
+  <PicListItem v-for="item of list" :post-id="item.objectId" :title="item.title" :key="item.objectId" :big-pic="item.bigPic" :small-pics="item.smallPics" :tags="item.tags" :post-time="item.createdAt" />
   <pagination :page="page" :size="size" :total="total" @change="turn" />
 </div>
 </template>

@@ -26,7 +26,7 @@
 <div class="head-panel">
   <HeadPics />
   <HeadNav />
-  <HeadSearch />
+  <!-- <HeadSearch /> -->
 </div>
 </template>
 

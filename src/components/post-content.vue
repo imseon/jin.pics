@@ -46,10 +46,10 @@ h1 {
 <div class="post-content" v-if="post">
   <div>
     <h1>{{post.title}}</h1>
-    <p class="post-content-head" v-if="post.head" v-html="post.head"></p>
+    <p class="post-content-head" v-if="post.head" v-html="post.head.split('\n').join('<br/>')"></p>
     <ul class="pics-list">
       <li v-for="pic,i of post.pics" :data-sub-html="`.gallery-item-desc-hidden-${i}`" :data-src="pic.img" :data-thumbnail="pic.img + '!w300'">
-        <img :src="pic.img" />
+        <img :src="pic.img + '!w1000'" />
         <p v-if="pic.desc">{{pic.desc}}</p>
         <div :class="`gallery-item-desc-hidden gallery-item-desc-hidden-${i}`">
           <p class="gallery-item-desc">

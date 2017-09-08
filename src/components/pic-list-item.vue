@@ -106,28 +106,39 @@ $padding: 0.3rem;
 
 <template>
 <div class="pic-list-item">
-  <img class="big" :src="bigPic" />
+  <img class="big" :src="bigPic + '!w1000'" />
   <h2>{{title}}</h2>
   <ul class="tags">
     <li v-for="tag of tags">{{tag.name}}</li>
   </ul>
   <ul class="thumbs">
-    <li v-for="pic of smallPics"><img class="small" :src="pic.img || pic" /></li>
+    <li v-for="pic of smallPics"><img class="small" :src="(pic.img || pic) + '!w300'" /></li>
     <li><img class="small" :src="smallPics[0].img || smallPics[0]" /></li>
     <li class="btn-more">
       <router-link :to="{ name: 'post', params: {id:postId} }"><i></i> 查看更多</router-link>
     </li>
   </ul>
   <div class="bottom">
-    <span class="post-info">posted by jin @2017-07-07 16:35:34</span>
-    <span class="views">45,738阅读</span>
+    <span class="post-info">posted by seon @ {{formattedPostTime}}</span>
+    <span class="views" v-if="read">45,738阅读</span>
   </div>
 </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
+import moment from 'moment'
+
 export default {
-  props: ['title', 'bigPic', 'smallPics', 'tags', 'postId'],
+  props: ['title', 'bigPic', 'smallPics', 'tags', 'postId', 'postTime', 'read'],
+  computed: {
+    formattedPostTime () {
+      return moment(this.postTime).format('YYYY-MM-DD HH:mm')
+    },
+    ...mapState({})
+  },
   components: {},
   methods: {},
   mounted () {}

@@ -2961,10 +2961,6 @@ ignore@^3.2.0:
   version "3.3.3"
   resolved "https://registry.npmjs.org/ignore/-/ignore-3.3.3.tgz#432352e57accd87ab3110e82d3fea0e47812156d"
 
-impress.js@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/impress.js/-/impress.js-0.6.0.tgz#5211da4976408bb5b844eefc2914d9d4fe927e91"
-
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -3294,7 +3290,7 @@ jpeg-js@^0.1.1:
   version "0.1.2"
   resolved "https://registry.npmjs.org/jpeg-js/-/jpeg-js-0.1.2.tgz#135b992c0575c985cfa0f494a3227ed238583ece"
 
-jquery@>=1.7.0, jquery@^3.2.1:
+jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
@@ -3519,12 +3515,6 @@ lg-autoplay.js@^1.0.0:
 lg-thumbnail.js@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/lg-thumbnail.js/-/lg-thumbnail.js-1.0.0.tgz#da737abbeb987a1b9ca57d1024edd351002d297b"
-
-lg-thumbnail@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/lg-thumbnail/-/lg-thumbnail-1.0.3.tgz#ead123b8499d6c11ae9afeb5ccb4a4056ed64f5a"
-  dependencies:
-    jquery ">=1.7.0"
 
 lg-zoom.js@^1.0.1:
   version "1.0.1"
@@ -3819,6 +3809,10 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+moment@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
 ms@0.7.1:
   version "0.7.1"

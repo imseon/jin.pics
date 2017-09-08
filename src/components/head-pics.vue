@@ -25,7 +25,7 @@
 <div class="head-pics">
   <div v-if="pics.length > 0">
     <slider>
-      <img v-for="pic of pics" v-bind:src="pic.url" />
+      <img v-for="pic of pics" v-bind:src="pic.url + '!w1000'" />
     </slider>
   </div>
   <div class="loading" v-else></div>
